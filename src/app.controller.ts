@@ -10,10 +10,12 @@ import {guessResponse} from "./utilities/word";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("/word")
-  getWord(): string {
+  @Get("/word/reset")
+  resetWord() {
     //resets the game by deleting the current word
-    return this.appService.getWord();
+    return {
+      "message": "word reset"
+    };
   }
 
   @Get("/word/:guess")
