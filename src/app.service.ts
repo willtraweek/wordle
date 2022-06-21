@@ -10,7 +10,7 @@ export class AppService {
     return word.word;
   }
 
-  checkGuess(guess: string): object {
+  checkGuess(guess: string) : guessResponse[] {
     let guess_word = new Word(guess);
     return guess_word.guess(word)
   }

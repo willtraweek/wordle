@@ -3,7 +3,6 @@ import { Controller,
   Get,
   Param } from '@nestjs/common';
 import { AppService } from './app.service';
-import {Letter} from "./utilities/Letter";
 import {guessResponse} from "./utilities/word";
 
 @Controller()
@@ -19,7 +18,7 @@ export class AppController {
   }
 
   @Get("/word/:guess")
-  checkGuess(@Param("guess") guess: string): object {
+  checkGuess(@Param("guess") guess: string): guessResponse[] {
     // checks to see what letters the guess got correct
     try {
       return this.appService.checkGuess(guess);

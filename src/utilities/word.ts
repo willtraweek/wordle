@@ -34,22 +34,22 @@ export class Word {
         return this._letters.join('');
     }
 
-    guess(secret_word: Word) {
+    guess(secret_word: Word): guessResponse[] {
         // call guess.guess(secret_word) to get a response of what
-        let output = Array<[string, guessResponse]>(5);
+        let output = Array<guessResponse>(5);
 
         for (let i = 0; i < WORDSIZE; i++) {
             let guess = this.letters[i];
             let answer = secret_word.letters[i];
             let guess_letter_in_word: guessResponse = guessResponse.NOT_IN_WORD;
 
-            if (guess == answer) {
+            if (guess.equals(answer)) {
                 guess_letter_in_word = guessResponse.CORRECT_POSITION;
-            } else if (secret_word.letters.includes(guess)) {
+            } else if (secret_word.word.includes(guess.toString())) {
                 guess_letter_in_word = guessResponse.WRONG_POSITION;
             }
 
-            output[i] = [guess.letter, guess_letter_in_word];
+            output[i] = guess_letter_in_word;
         }
 
         return output;
