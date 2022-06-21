@@ -33,4 +33,25 @@ export class Word {
     get word(): string {
         return this._letters.join('');
     }
+
+    guess(secret_word: Word) {
+        // call guess.guess(secret_word) to get a response of what
+        let output = Array<[string, guessResponse]>(5);
+
+        for (let i = 0; i < WORDSIZE; i++) {
+            let guess = this.letters[i];
+            let answer = secret_word.letters[i];
+            let guess_letter_in_word: guessResponse = guessResponse.NOT_IN_WORD;
+
+            if (guess == answer) {
+                guess_letter_in_word = guessResponse.CORRECT_POSITION;
+            } else if (secret_word.letters.includes(guess)) {
+                guess_letter_in_word = guessResponse.WRONG_POSITION;
+            }
+
+            output[i] = [guess.letter, guess_letter_in_word];
+        }
+
+        return output;
+    }
 }
