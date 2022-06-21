@@ -1,4 +1,5 @@
 import {Letter} from "./Letter";
+import { PipeTransform, Injectable, ArgumentMetadata } from "@nestjs/common";
 
 const WORDSIZE = 5;
 
@@ -50,6 +51,22 @@ export class Word {
             }
 
             output[i] = guess_letter_in_word;
+        }
+
+        return output;
+    }
+}
+
+@Injectable()
+export class WordPipe implements PipeTransform {
+    transform(value: any, metadata: ArgumentMetadata): Word[] {
+        let output = new Array<Word>(0);
+
+        if(value) {
+            let guesses = value.split(",")
+            for (let i = 0; i < (guesses.length <= 5 ? guesses.length : 5) ; i++) {
+                output.push((new Word(guesses[i])))
+            }
         }
 
         return output;
