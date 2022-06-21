@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Word, guessResponse } from "./utilities/word";
-import {Letter} from "./utilities/Letter";
 
 let word = new Word();
 
