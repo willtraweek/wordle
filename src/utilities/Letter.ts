@@ -12,6 +12,10 @@ export class Letter {
         this.letter = letter;
     }
 
+    public equals(obj: Letter): boolean {
+        return this.letter === obj.letter;
+    }
+
     toString(): string {
         return this.letter;
     }
