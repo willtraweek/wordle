@@ -1,17 +1,19 @@
 import {Letter} from "./Letter";
 
+const WORDSIZE = 5;
+
 export class Word {
-    private _letters = Array<Letter>(5);
+    private _letters = Array<Letter>(WORDSIZE);
 
     constructor(word: string = "") {
         if (word == "") { word = "zelus" }
 
-        if (word.length != 5){
-            throw new Error("Word has the wrong length")
+        if (word.length != WORDSIZE){
+            throw new Error(`Word has the wrong length -- length should be ${WORDSIZE}`)
         }
 
         // convert word to letters
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < WORDSIZE; i++) {
             this._letters[i] = new Letter(word[i]);
         }
 
