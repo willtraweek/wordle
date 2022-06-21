@@ -2,6 +2,12 @@ import {Letter} from "./Letter";
 
 const WORDSIZE = 5;
 
+export enum guessResponse {
+    NOT_IN_WORD = "NOT_IN_WORD",
+    WRONG_POSITION = "WRONG_POSITION",
+    CORRECT_POSITION = "CORRECT_POSITION"
+}
+
 export class Word {
     private _letters = Array<Letter>(WORDSIZE);
 
@@ -25,6 +31,6 @@ export class Word {
     }
 
     get word(): string {
-        return this._letters.join('')
+        return this._letters.join('');
     }
 }
