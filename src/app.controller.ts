@@ -12,6 +12,7 @@ export class AppController {
   @Get("/word/reset")
   resetWord() {
     //resets the game by deleting the current word
+    this.appService.resetWord();
     return {
       "message": "word reset"
     };

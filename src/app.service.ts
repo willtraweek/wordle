@@ -5,7 +5,7 @@ let word = new Word();
 
 @Injectable()
 export class AppService {
-  getWord(): string {
+  resetWord(): string {
     return word.word;
   }
 
