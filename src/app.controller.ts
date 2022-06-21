@@ -1,4 +1,4 @@
-import { Controller,
+import { Controller, Render,
   HttpException, HttpStatus,
   Get,
   Param } from '@nestjs/common';
@@ -9,13 +9,17 @@ import {guessResponse} from "./utilities/word";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get("/")
+  @Render("index")
+  playGame() {
+    return { message: "Hello world!" }
+  }
+
   @Get("/word/reset")
   resetWord() {
     //resets the game by deleting the current word
     this.appService.resetWord();
-    return {
-      "message": "word reset"
-    };
+    return { message: "word reset" };
   }
 
   @Get("/word/:guess")
