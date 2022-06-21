@@ -5,6 +5,8 @@
     <title>Wordle</title>
 </head>
 <body>
-    {{message}}
+    {{#each guesses}}
+        <li>{{this.word}}</li>
+    {{/each}}
 </body>
 </html>

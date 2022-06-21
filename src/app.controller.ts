@@ -1,9 +1,9 @@
 import { Controller, Render,
   HttpException, HttpStatus,
   Get,
-  Param } from '@nestjs/common';
+  Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
-import {guessResponse} from "./utilities/word";
+import { Word, guessResponse, WordPipe} from "./utilities/word";
 
 @Controller()
 export class AppController {
@@ -11,8 +11,11 @@ export class AppController {
 
   @Get("/")
   @Render("index")
-  playGame() {
-    return { message: "Hello world!" }
+  playGame(@Query("guesses", new WordPipe()) guesses: Word[]) {
+    return {
+      message: "Hello world!",
+      guesses: guesses
+    }
   }
 
   @Get("/word/reset")
